@@ -6,7 +6,8 @@ Created on Sun Oct  8 11:55:39 2023
 """
 import numpy as np
 from manim import *
-
+config.background_color = WHITE
+config["background_color"] = WHITE
 
 class CreateCircle(Scene):
     def construct(self):
@@ -26,14 +27,11 @@ class SquareToCircle(Scene):
         self.play(Transform(square, circle))  # interpolate the square into the circle
         self.play(FadeOut(square))  # fade out animation
 
-class TrajectoryAnimation(Scene):
+class TrajectoryAnimation(ThreeDScene):
     def construct(self):
         # Set the frame dimensions
         self.camera.frame_width = 12  # Adjust as needed
         self.camera.frame_height = 12  # Adjust as needed
-        
-        # Create a white rectangle to serve as the background
-        background = Rectangle(width=12, height=12, fill_color=WHITE, fill_opacity=1).shift(ORIGIN)
 
 
         # Load the data from the file and split into coordinates
@@ -46,11 +44,11 @@ class TrajectoryAnimation(Scene):
         particle2_path = self.create_trajectory(particle2_coords)
 
         # Create particles at initial positions
-        particle1 = Dot(color=BLUE).move_to(particle1_coords[0])
-        particle2 = Dot(color=RED).move_to(particle2_coords[0])
-
+        particle1 = Sphere(radius=0.2).move_to(particle1_coords[0]).set_color(BLUE)
+        particle2 = Sphere(radius=0.2).move_to(particle2_coords[0]).set_color(RED)
+        
         # Animate the trajectory
-        self.add(background)
+        self.set_camera_orientation(phi=75 * DEGREES, theta=-30 * DEGREES)
         self.play(
             MoveAlongPath(particle1, particle1_path),
             MoveAlongPath(particle2, particle2_path),
@@ -63,4 +61,3 @@ class TrajectoryAnimation(Scene):
 
     def create_trajectory(self, coords, color=BLUE_A):
         return VMobject().set_points_smoothly([*coords]).set_color(color)
-
