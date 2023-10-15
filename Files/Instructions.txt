@@ -1,0 +1,3 @@
+Go to Command prompt
+type>> cd C:\Users\danis\Desktop\MFG 598 Project\ManimProject\Files\project
+type>> manim -pql scene.py
