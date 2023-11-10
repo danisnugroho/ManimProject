@@ -1,0 +1,11 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/danis/Desktop/MFG 598 Project/ManimProject/Files/project/media/videos/scene/480p15/partial_movie_files/DeuteronCentered/324840084_4148710687_525330056.mp4'
+file 'file:C:/Users/danis/Desktop/MFG 598 Project/ManimProject/Files/project/media/videos/scene/480p15/partial_movie_files/DeuteronCentered/2045877066_1546785214_4264655638.mp4'
+file 'file:C:/Users/danis/Desktop/MFG 598 Project/ManimProject/Files/project/media/videos/scene/480p15/partial_movie_files/DeuteronCentered/2045877066_3954034907_2675315940.mp4'
+file 'file:C:/Users/danis/Desktop/MFG 598 Project/ManimProject/Files/project/media/videos/scene/480p15/partial_movie_files/DeuteronCentered/2045877066_2052102041_4228095488.mp4'
+file 'file:C:/Users/danis/Desktop/MFG 598 Project/ManimProject/Files/project/media/videos/scene/480p15/partial_movie_files/DeuteronCentered/2045877066_719319586_671514469.mp4'
+file 'file:C:/Users/danis/Desktop/MFG 598 Project/ManimProject/Files/project/media/videos/scene/480p15/partial_movie_files/DeuteronCentered/2045877066_87965085_1022787457.mp4'
+file 'file:C:/Users/danis/Desktop/MFG 598 Project/ManimProject/Files/project/media/videos/scene/480p15/partial_movie_files/DeuteronCentered/2045877066_1963350706_186963305.mp4'
+file 'file:C:/Users/danis/Desktop/MFG 598 Project/ManimProject/Files/project/media/videos/scene/480p15/partial_movie_files/DeuteronCentered/2045877066_2030135107_1725878576.mp4'
+file 'file:C:/Users/danis/Desktop/MFG 598 Project/ManimProject/Files/project/media/videos/scene/480p15/partial_movie_files/DeuteronCentered/2045877066_3650092875_4029695275.mp4'
+file 'file:C:/Users/danis/Desktop/MFG 598 Project/ManimProject/Files/project/media/videos/scene/480p15/partial_movie_files/DeuteronCentered/2045877066_2281440559_980376888.mp4'

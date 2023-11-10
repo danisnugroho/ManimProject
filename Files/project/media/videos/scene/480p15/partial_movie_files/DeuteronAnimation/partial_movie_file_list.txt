@@ -1,0 +1,3 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/danis/Desktop/MFG 598 Project/ManimProject/Files/project/media/videos/scene/480p15/partial_movie_files/DeuteronAnimation/473991239_3493162410_3448242680.mp4'
+file 'file:C:/Users/danis/Desktop/MFG 598 Project/ManimProject/Files/project/media/videos/scene/480p15/partial_movie_files/DeuteronAnimation/3449280154_3776593507_733665145.mp4'
