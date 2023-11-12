@@ -240,8 +240,8 @@ class DeuteronCenter(ThreeDScene):
         blue_paths = self.create_trajectory(blue_coordinates_recentered, color=BLUE)
 
         # Create particles at their initial positions
-        red_particles = [Sphere(radius=0.05, color=RED).move_to(red_coordinates[0][i]) for i in range(10)]
-        blue_particles = [Sphere(radius=0.05, color=BLUE).move_to(blue_coordinates[0][i]) for i in range(10)]
+        red_particles = [Sphere(radius=0.05, color=RED).move_to(red_coordinates[0][i]).set_color(RED) for i in range(10)]
+        blue_particles = [Sphere(radius=0.05, color=BLUE).move_to(blue_coordinates[0][i]).set_color(BLUE) for i in range(10)]
 
         # Create AnimationGroup for simultaneous animation
         animations = AnimationGroup(*[
