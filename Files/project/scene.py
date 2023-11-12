@@ -124,7 +124,7 @@ class Example20Particles(ThreeDScene):
 '''
 Deuteron
 Below
-*Need to be fixed, not simultaneous and not centered
+*Need to be fixed, not colored and not centered
 
 # Calculate the center of mass (CM) for both particles
 cm = 0.5 * (particle1_coords + particle2_coords)
@@ -197,6 +197,47 @@ class DeuteronSimultaneous(ThreeDScene):
         # Create paths for red and blue particles
         red_paths = self.create_trajectory(red_coordinates, color=RED)
         blue_paths = self.create_trajectory(blue_coordinates, color=BLUE)
+
+        # Create particles at their initial positions
+        red_particles = [Sphere(radius=0.05, color=RED).move_to(red_coordinates[0][i]) for i in range(10)]
+        blue_particles = [Sphere(radius=0.05, color=BLUE).move_to(blue_coordinates[0][i]) for i in range(10)]
+
+        # Create AnimationGroup for simultaneous animation
+        animations = AnimationGroup(*[
+            MoveAlongPath(red_particles[i], red_paths[i])
+            for i in range(10)
+        ] + [
+            MoveAlongPath(blue_particles[i], blue_paths[i])
+            for i in range(10)
+        ], run_time=5, rate_func=linear)
+
+        # Animate all particles simultaneously
+        self.set_camera_orientation(phi=75 * DEGREES, theta=-30 * DEGREES)
+        self.play(animations)
+
+    def create_trajectory(self, coords, color=BLUE_A):
+        paths = []
+        for i in range(10):
+            paths.append(VMobject().set_points_smoothly(coords[:, i, :]).set_color(color))
+        return paths
+    
+class DeuteronCenter(ThreeDScene):
+    def construct(self):
+        # Set the frame dimensions
+        self.camera.frame_width = 10  # Adjust as needed
+        self.camera.frame_height = 10  # Adjust as needed
+
+        # Calculate center of mass for red and blue particles
+        red_cm = np.mean(red_coordinates, axis=1)
+        blue_cm = np.mean(blue_coordinates, axis=1)
+
+        # Recenter the coordinates by subtracting the center of mass
+        red_coordinates_recentered = red_coordinates - red_cm[:, np.newaxis, :]
+        blue_coordinates_recentered = blue_coordinates - blue_cm[:, np.newaxis, :]
+
+        # Create paths for red and blue particles
+        red_paths = self.create_trajectory(red_coordinates_recentered, color=RED)
+        blue_paths = self.create_trajectory(blue_coordinates_recentered, color=BLUE)
 
         # Create particles at their initial positions
         red_particles = [Sphere(radius=0.05, color=RED).move_to(red_coordinates[0][i]) for i in range(10)]
