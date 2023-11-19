@@ -2,3 +2,7 @@ Go to Command prompt
 type>> cd C:\Users\danis\Desktop\MFG 598 Project\ManimProject\Files\project
 type>> manim -pql scene.py
 type>> manim -pqh scene.py *for high quality
+
+type>> manim -pql deu.py
+type>> manim -pql tri.py
+type>> manim -pql alp.py
