@@ -17,7 +17,7 @@ green_coordinates = []
 yellow_coordinates = []
 
 N = 10
-totFrame=1001
+totFrame=1000
 Npart=4
 
 coords=np.zeros((N*totFrame,Npart,3))
@@ -28,9 +28,9 @@ for i in range(totFrame):
     # Load the data from the .npy file
     data = np.load(file_path)
     
-    for j in range(i*N,(i+1)*N):
+    for j in range(N):
         for k in range(Npart):
-            coords[j,k,:]=data[i,j:j+3]
+            coords[i*N+j,k,:]=data[j,k:k+3]
     
 '''
     # Take the first 10 rows for three nucleons (red, blue, and green)
@@ -58,10 +58,11 @@ for i in range(N*totFrame):
 #green_coordinates = np.array(green_coordinates)
 #yellow_coordinates = np.array(yellow_coordinates)
 
-red_coordinates_recentered = coords[:,0,:]
-blue_coordinates_recentered = coords[:,1,:]
-green_coordinates_recentered = coords[:,2,:]
-yellow_coordinates_recentered = coords[:,3,:]
+red_coordinates_recentered = coords[:,0,:].copy()
+blue_coordinates_recentered = coords[:,1,:].copy()
+green_coordinates_recentered = coords[:,2,:].copy()
+yellow_coordinates_recentered = coords[:,3,:].copy()
+
 
 class AlphaAnimation(ThreeDScene):
     def construct(self):
