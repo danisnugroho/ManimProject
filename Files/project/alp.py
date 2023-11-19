@@ -58,10 +58,15 @@ for i in range(N*totFrame):
 #green_coordinates = np.array(green_coordinates)
 #yellow_coordinates = np.array(yellow_coordinates)
 
-red_coordinates_recentered = coords[:,0,:].copy()
-blue_coordinates_recentered = coords[:,1,:].copy()
-green_coordinates_recentered = coords[:,2,:].copy()
-yellow_coordinates_recentered = coords[:,3,:].copy()
+r=np.zeros((totFrame,N,3))
+b=np.zeros((totFrame,N,3))
+g=np.zeros((totFrame,N,3))
+y=np.zeros((totFrame,N,3))
+for i in range(3):
+    r[:,:,i]=coords[:,0,i].reshape((totFrame,N))
+    b[:,:,i]=coords[:,1,i].reshape((totFrame,N))
+    g[:,:,i]=coords[:,2,i].reshape((totFrame,N))
+    y[:,:,i]=coords[:,3,i].reshape((totFrame,N))
 
 
 class AlphaAnimation(ThreeDScene):
@@ -83,10 +88,10 @@ class AlphaAnimation(ThreeDScene):
         #yellow_coordinates_recentered = yellow_coordinates - yellow_cm[:, np.newaxis, :]
         
         # Create paths for red and blue particles
-        red_paths = self.create_trajectory(coords[:,0,:], color=RED)
-        blue_paths = self.create_trajectory(blue_coordinates_recentered, color=BLUE)
-        green_paths = self.create_trajectory(green_coordinates_recentered, color=GREEN)
-        yellow_paths = self.create_trajectory(yellow_coordinates_recentered, color=YELLOW)
+        red_paths = self.create_trajectory(r, color=RED)
+        blue_paths = self.create_trajectory(b, color=BLUE)
+        green_paths = self.create_trajectory(g, color=GREEN)
+        yellow_paths = self.create_trajectory(y, color=YELLOW)
         
         # Create particles at their initial positions
         red_particles = [Sphere(radius=0.05,
