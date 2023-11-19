@@ -83,7 +83,7 @@ class AlphaAnimation(ThreeDScene):
         #yellow_coordinates_recentered = yellow_coordinates - yellow_cm[:, np.newaxis, :]
         
         # Create paths for red and blue particles
-        red_paths = self.create_trajectory(red_coordinates_recentered, color=RED)
+        red_paths = self.create_trajectory(coords[:,0,:], color=RED)
         blue_paths = self.create_trajectory(blue_coordinates_recentered, color=BLUE)
         green_paths = self.create_trajectory(green_coordinates_recentered, color=GREEN)
         yellow_paths = self.create_trajectory(yellow_coordinates_recentered, color=YELLOW)
