@@ -71,9 +71,6 @@ for i in range(3):
 
 class AlphaAnimation(ThreeDScene):
     def construct(self):
-        # Set the frame dimensions
-        self.camera.frame_width = 10  # Adjust as needed
-        self.camera.frame_height = 10  # Adjust as needed
 
         ## Calculate center of mass
         #red_cm = np.mean(red_coordinates, axis=1)
@@ -95,16 +92,16 @@ class AlphaAnimation(ThreeDScene):
         
         # Create particles at their initial positions
         red_particles = [Sphere(radius=0.05,
-        color=RED).move_to(red_coordinates[0][i]).set_color(RED) for i in
+        color=RED).move_to(r[0][i]).set_color(RED) for i in
         range(N)]
         blue_particles = [Sphere(radius=0.05,
-        color=BLUE).move_to(blue_coordinates[0][i]).set_color(BLUE) for i in
+        color=BLUE).move_to(b[0][i]).set_color(BLUE) for i in
         range(N)]
         green_particles = [Sphere(radius=0.05,
-        color=GREEN).move_to(green_coordinates[0][i]).set_color(GREEN) for i in
+        color=GREEN).move_to(g[0][i]).set_color(GREEN) for i in
         range(N)]
         yellow_particles = [Sphere(radius=0.05,
-        color=YELLOW).move_to(yellow_coordinates[0][i]).set_color(YELLOW) for i
+        color=YELLOW).move_to(y[0][i]).set_color(YELLOW) for i
         in range(N)]
         
         # Create AnimationGroup for simultaneous animation
