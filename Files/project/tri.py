@@ -10,9 +10,7 @@ from manim import *
 config.background_color = WHITE
 config["background_color"] = WHITE
 
-content = np.load("triton/0.npy")
-
-folder_path = "triton"
+folder_path = r"C:\Users\danis\Desktop\MFG 598 Project\ManimProject\data\triton\npy"
 red_coordinates = []
 blue_coordinates = []
 green_coordinates = []

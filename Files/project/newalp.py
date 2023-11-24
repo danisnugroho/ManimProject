@@ -11,7 +11,7 @@ from manim import *
 config.background_color = WHITE
 config["background_color"] = WHITE
 
-folder_path = "alpha"
+folder_path = r"C:\Users\danis\Desktop\MFG 598 Project\ManimProject\data\alpha\npy"
 red_coordinates = []
 blue_coordinates = []
 green_coordinates = []
@@ -50,6 +50,8 @@ for i in range(3):
 
 class AlphaAnimation(ThreeDScene):
     def construct(self):
+        self.camera.frame_width = 30  # Adjust as needed
+        self.camera.frame_height = 30  # Adjust as needed
         
         # Create paths for red and blue particles
         red_paths = self.create_trajectory(r, color=RED)

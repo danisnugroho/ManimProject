@@ -11,13 +11,13 @@ config.background_color = WHITE
 config["background_color"] = WHITE
 
 # Define the folder containing the .npy files
-folder_path = "alpha"
+folder_path = r"C:\Users\danis\Desktop\MFG 598 Project\ManimProject\data\triton\npy"
 red_coordinates = []
 blue_coordinates = []
 green_coordinates = []
 
 N = 10
-totFrame=1000
+totFrame=501
 Npart=3
 
 coords=np.zeros((N*totFrame,Npart,3))
@@ -49,7 +49,8 @@ for i in range(3):
     
 class TritonAnimation(ThreeDScene):
     def construct(self):
-        
+        self.camera.frame_width = 50 # Adjust as needed
+        self.camera.frame_height = 50  # Adjust as needed
         # Create paths for red and blue particles
         red_paths = self.create_trajectory(r, color=RED)
         blue_paths = self.create_trajectory(b, color=BLUE)

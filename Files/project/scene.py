@@ -66,13 +66,13 @@ class TrajectoryAnimation(ThreeDScene):
     def create_trajectory(self, coords, color=BLUE_A):
         return VMobject().set_points_smoothly([*coords]).set_color(color)
     
-class DeuteronAnimation(ThreeDScene):
+class DeuteronTest(ThreeDScene):
     def construct(self):
         # Set the frame dimensions
         self.camera.frame_width = 25  # Adjust as needed
         self.camera.frame_height = 25  # Adjust as needed
         
-        file_path = "deuteron/0.npy"  # Specify the path to the file you want to visualize
+        file_path = r"C:\Users\danis\Desktop\MFG 598 Project\ManimProject\data\deuteron\npy\0.npy" # Specify the path to the file you want to visualize
         coords = np.load(file_path)
         particle1_coords = coords[:, :3]  # x, y, z for particle 1
         particle2_coords = coords[:, 3:]  # x, y, z for particle 2
@@ -104,38 +104,8 @@ class DeuteronAnimation(ThreeDScene):
     def create_trajectory(self, coords, color=BLUE_A):
         return VMobject().set_points_smoothly([*coords]).set_color(color)
 
-import random    
-class Example20Particles(ThreeDScene):
-    def construct(self):
-        # Create a list of 20 particles with initial random 3D coordinates
-        particles = [Sphere(radius=0.05, color=BLACK).move_to(np.array([random.uniform(-3, 3), random.uniform(-3, 3), random.uniform(-3, 3)])) for _ in range(20)]
-
-        # Create animations to display the particles
-        animations = [Create(particle) for particle in particles]
-
-        # Play the animations
-        self.play(*animations)
-
-        # Simulate random movement for the particles
-        for _ in range(100):
-            for particle in particles:
-                particle.shift(np.array([random.uniform(-0.05, 0.05), random.uniform(-0.05, 0.05), random.uniform(-0.05, 0.05)]))
-            self.wait(0.1)
-'''
-Deuteron
-Below
-*Need to be fixed, not colored and not centered
-
-# Calculate the center of mass (CM) for both particles
-cm = 0.5 * (particle1_coords + particle2_coords)
-
-# Recenter the coordinates by subtracting the CM
-particle1_coords -= cm
-particle2_coords -= cm
-'''
-
 # Define the folder containing the .npy files
-folder_path = "deuteron"
+folder_path = r"C:\Users\danis\Desktop\MFG 598 Project\ManimProject\data\deuteron\npy"
 red_coordinates = []
 blue_coordinates = []
 

@@ -11,7 +11,7 @@ config.background_color = WHITE
 config["background_color"] = WHITE
 
 # Define the folder containing the .npy files
-folder_path = "deuteron"
+folder_path = r"C:\Users\danis\Desktop\MFG 598 Project\ManimProject\data\deuteron\npy"
 red_coordinates = []
 blue_coordinates = []
 
