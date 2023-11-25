@@ -7,11 +7,15 @@ Created on Sat Nov 18 16:23:50 2023
 import os
 import numpy as np
 from manim import *
+
+# Change background color
 config.background_color = WHITE
 config["background_color"] = WHITE
 
 # Define the folder containing the .npy files
 folder_path = r"C:\Users\danis\Desktop\MFG 598 Project\ManimProject\data\deuteron\npy"
+
+# Deuteron has 2 nucleon clouds
 red_coordinates = []
 blue_coordinates = []
 
@@ -65,12 +69,16 @@ class DeuteronAnimation(ThreeDScene):
             for i in range(10)
         ], run_time=5, rate_func=linear)
 
-        # Animate all particles simultaneously
+        # Camera orientation
         self.set_camera_orientation(phi=75 * DEGREES, theta=-30 * DEGREES)
         self.play(animations)
 
     def create_trajectory(self, coords, color=BLUE_A):
+        # Initialize an empty list to store the paths
         paths = []
+        # Iterate over each particle
         for i in range(10):
+            # Create a Vectorized Mobject representing the trajectory of the particle
+            # set_points_smoothly is used to create a smooth trajectory from the given coordinates
             paths.append(VMobject().set_points_smoothly(coords[:, i, :]).set_color(color))
         return paths

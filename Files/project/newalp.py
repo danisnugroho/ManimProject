@@ -8,41 +8,58 @@ Created on Sun Nov 19 18:18:38 2023
 import os
 import numpy as np
 from manim import *
+
 config.background_color = WHITE
 config["background_color"] = WHITE
 
+# Define the folder containing the .npy files
 folder_path = r"C:\Users\danis\Desktop\MFG 598 Project\ManimProject\data\alpha\npy"
+
+# Alpha has 4 nucleon clouds
 red_coordinates = []
 blue_coordinates = []
 green_coordinates = []
 yellow_coordinates = []
 
-N = 10
-totFrame=1000
-Npart=4
+N = 10 # points in each of the nucleon clouds
+totFrame=1000 # of npy files, time step
+Npart=4 # Alpha has 4 nucleon clouds
 
+# Create a 3D array to store the coordinates of nucleons over time
 coords=np.zeros((N*totFrame,Npart,3))
 
+# Iterate over each time step (frame)
 for i in range(totFrame):
     file_path = os.path.join(folder_path, f"{i}.npy")
     
     # Load the data from the .npy file
     data = np.load(file_path)
     
+    # Iterate over each nucleon
     for j in range(N):
+        # Iterate over each nucleon cloud (Npart)
         for k in range(Npart):
-            coords[i*N+j,k,:]=data[j,k:k+3]
-            
+            # Extract and store the (x, y, z) coordinates of the nucleon
+            coords[i*N+j,k,:]=data[j,k:k+3] # The slice k:k + 3 selects the elements from index (k, k+1, k+2)
+
+# Create an empty array to store center of mass coordinates
 cm=np.zeros((N*totFrame,3))
+
+# Calculate center of mass for red, blue, green, and yellow particles
 for i in range(N*totFrame):
+    # Calculate center of mass for the nucleons at the current time step
     cm[i,:]=np.sum(coords[i,:,:],axis=0)/Npart
+    # Recenter the coordinates by subtracting the center of mass
     coords[i,:,:]=coords[i,:,:]-cm[i,:]
-    
+
+# Separate coordinates into arrays for red, blue, green, and yellow particles    
 r=np.zeros((totFrame,N,3))
 b=np.zeros((totFrame,N,3))
 g=np.zeros((totFrame,N,3))
 y=np.zeros((totFrame,N,3))
+
 for i in range(3):
+    # Extract and reshape coordinates for red, blue, green, and yellow particles
     r[:,:,i]=coords[:,0,i].reshape((totFrame,N))
     b[:,:,i]=coords[:,1,i].reshape((totFrame,N))
     g[:,:,i]=coords[:,2,i].reshape((totFrame,N))
@@ -94,6 +111,9 @@ class AlphaAnimation(ThreeDScene):
 
     def create_trajectory(self, coords, color=BLUE_A):
         paths = []
+        # Iterate over each particle
         for i in range(N):
+            # Create a Vectorized Mobject representing the trajectory of the particle
+            # set_points_smoothly is used to create a smooth trajectory from the given coordinates
             paths.append(VMobject().set_points_smoothly(coords[:, i, :]).set_color(color))
         return paths

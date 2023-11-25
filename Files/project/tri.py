@@ -7,21 +7,26 @@ Created on Sat Nov 18 16:44:04 2023
 import os
 import numpy as np
 from manim import *
+
+# Change background color
 config.background_color = WHITE
 config["background_color"] = WHITE
 
 folder_path = r"C:\Users\danis\Desktop\MFG 598 Project\ManimProject\data\triton\npy"
+
+# Triton has 3 nucleon clouds
 red_coordinates = []
 blue_coordinates = []
 green_coordinates = []
 
+# Iterate through the .npy files in the folder
 for i in range(501):
     file_path = os.path.join(folder_path, f"{i}.npy")
     
     # Load the data from the .npy file
     data = np.load(file_path)
     
-    # Take the first 10 rows for both nucleons (red and blue)
+    # Take the first 10 rows for both nucleons (red, blue, and green)
     red_nucleon_coordinates = data[:10, :3]  # Columns 0, 1, and 2 for the red nucleon
     blue_nucleon_coordinates = data[:10, 3:6]  # Columns 3, 4, and 5 for the blue nucleon
     green_nucleon_coordinates = data[:10, 6:]  # Columns 3, 4, and 5 for the blue nucleon
@@ -79,7 +84,11 @@ class TritonAnimation(ThreeDScene):
         self.play(animations)
 
     def create_trajectory(self, coords, color=BLUE_A):
+        # Initialize an empty list to store the paths
         paths = []
+        # Iterate over each particle
         for i in range(10):
+            # Create a Vectorized Mobject representing the trajectory of the particle
+            # set_points_smoothly is used to create a smooth trajectory from the given coordinates
             paths.append(VMobject().set_points_smoothly(coords[:, i, :]).set_color(color))
         return paths

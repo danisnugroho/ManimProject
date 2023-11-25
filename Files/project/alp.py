@@ -7,10 +7,15 @@ Created on Sat Nov 18 17:11:05 2023
 import os
 import numpy as np
 from manim import *
+
+# Change background color
 config.background_color = WHITE
 config["background_color"] = WHITE
 
+# Extracting data from npy files
 folder_path = r"C:\Users\danis\Desktop\MFG 598 Project\ManimProject\data\alpha\npy"
+
+# Alpha particle has 4 nucleon clouds
 red_coordinates = []
 blue_coordinates = []
 green_coordinates = []
@@ -22,7 +27,7 @@ for i in range(1001):
     # Load the data from the .npy file
     data = np.load(file_path)
     
-    # Take the first 10 rows for three nucleons (red, blue, and green)
+    # Take the first 10 rows for three nucleons (red, blue, green, and yellow)
     red_nucleon_coordinates = data[:10, :3]  # Columns 0, 1, and 2 for the red nucleon
     blue_nucleon_coordinates = data[:10, 3:6]  # Columns 3, 4, and 5 for the blue nucleon
     green_nucleon_coordinates = data[:10, 6:9]  # Columns 6, 7, and 8 for the green nucleon
@@ -85,12 +90,16 @@ class AlphaAnimation(ThreeDScene):
             for i in range(10)
         ], run_time=5, rate_func=linear)
 
-        # Animate all particles simultaneously
+        # Camera orientation
         self.set_camera_orientation(phi=75 * DEGREES, theta=-30 * DEGREES)
         self.play(animations)
 
     def create_trajectory(self, coords, color=BLUE_A):
+        # Initialize an empty list to store the paths
         paths = []
+        # Iterate over each particle
         for i in range(10):
+            # Create a Vectorized Mobject representing the trajectory of the particle
+            # set_points_smoothly is used to create a smooth trajectory from the given coordinates
             paths.append(VMobject().set_points_smoothly(coords[:, i, :]).set_color(color))
         return paths
