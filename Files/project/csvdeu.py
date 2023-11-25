@@ -64,8 +64,8 @@ class DeuteronAnimation(ThreeDScene):
         blue_paths = self.create_trajectory(b, color=BLUE)
 
         # Create particles at their initial positions
-        red_particles = [Sphere(radius=0.05, color=RED).move_to(r[0][i]).set_color(RED) for i in range(N)]
-        blue_particles = [Sphere(radius=0.05, color=BLUE).move_to(b[0][i]).set_color(BLUE) for i in range(N)]
+        red_particles = [Sphere(radius=0.1, color=RED).move_to(r[0][i]).set_color(RED) for i in range(N)]
+        blue_particles = [Sphere(radius=0.1, color=BLUE).move_to(b[0][i]).set_color(BLUE) for i in range(N)]
 
         # Create AnimationGroup for simultaneous animation
         animations = AnimationGroup(*[
@@ -78,7 +78,7 @@ class DeuteronAnimation(ThreeDScene):
 
         # Animate all particles simultaneously
         self.set_camera_orientation(phi=75 * DEGREES, theta=-30 * DEGREES)
-        # self.begin_ambient_camera_rotation(rate=0.7)
+        self.begin_ambient_camera_rotation(rate=0.5)
         self.play(animations)
 
     def create_trajectory(self, coords, color=BLUE_A):
