@@ -61,6 +61,8 @@ for i in range(3):
 
 class AlphaAnimation(ThreeDScene): # Class in Manim. This indicates that it's a 3D scene.
     def construct(self):
+        self.camera.frame_width = 20  # Adjust as needed
+        self.camera.frame_height = 20  # Adjust as needed
         
         # Create paths for red and blue particles
         red_paths = self.create_trajectory(r, color=RED)
@@ -99,7 +101,7 @@ class AlphaAnimation(ThreeDScene): # Class in Manim. This indicates that it's a 
 
         # Animate all particles simultaneously and rotate the camera
         self.set_camera_orientation(phi=75 * DEGREES, theta=-30 * DEGREES)
-        # self.begin_ambient_camera_rotation(rate=0.9)
+        self.begin_ambient_camera_rotation(rate=0.6)
         self.play(animations)
 
 
