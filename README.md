@@ -9,4 +9,4 @@ This project is aimed to create visualizations depicting the movement of nucleon
 - Pandas
 - Manim (Visualization component)
 
-[Video](https://drive.google.com/file/d/15RnyJErsFQsr0gjVWUooF3tXmDAh23yh/view?usp=sharing)
+[Video](https://drive.google.com/file/d/15LnjzeLyul5sGSgeSgRsqBzoFtkRIfVH/view?usp=sharing)
